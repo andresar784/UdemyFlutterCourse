@@ -17,7 +17,7 @@ class AlertScreen extends StatelessWidget {
            ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.lightBlue
         child: const Icon(Icons.close),
         onPressed: () {
          Navigator.pop(context);
