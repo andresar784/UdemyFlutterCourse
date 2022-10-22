@@ -1,3 +1,4 @@
+export  'package:flcomponents/screens/inputscreens.dart';
 export 'package:flcomponents/screens/animated.dart';
 export 'package:flcomponents/screens/avatarscreen.dart';
 export 'package:flcomponents/screens/listview2.dart';
