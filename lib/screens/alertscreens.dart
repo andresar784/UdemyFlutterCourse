@@ -1,10 +1,39 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen extends StatelessWidget {
    
   const AlertScreen({Key? key}) : super(key: key);
+
+  void displayDialogIOS(BuildContext context) {
+    showCupertinoDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text('Titulo de IOS'),
+            content: Column(mainAxisSize: MainAxisSize.min, children: const [
+              Text('Este es el contenido de la alerta'),
+              SizedBox(height: 10),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: FlutterLogo(size: 60),
+              )
+            ]),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                }, 
+                child: const Text("Cancelar") )
+            ],
+          );
+        });
+  }
   
-  void displayDialog(BuildContext context) {
+  void displayDialogMaterial(BuildContext context) {
     showDialog(
         //barrierDismissible permite cerra el dialog en la sombra
         barrierDismissible: false,
@@ -42,7 +71,11 @@ class AlertScreen extends StatelessWidget {
             padding:  EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Text('Mostrar Alerta', style: TextStyle(fontSize: 15),),
           ), 
-          onPressed: () => displayDialog( context),
+          //Platform para selecccionar cual plataforma se esta usando
+          onPressed: () => Platform.isAndroid ? displayDialogMaterial( context)
+          : displayDialogIOS( context),
+          // onPressed: () => displayDialogMaterial( context),
+          // onPressed: () => displayDialogIOS( context),
            ),
       ),
       floatingActionButton: FloatingActionButton(
