@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class AlertScreen extends StatelessWidget {
    
   const AlertScreen({Key? key}) : super(key: key);
-
+  //contenido para IOS
   void displayDialogIOS(BuildContext context) {
     showCupertinoDialog(
         barrierDismissible: true,
