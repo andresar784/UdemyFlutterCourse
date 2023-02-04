@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen extends StatelessWidget {
-   
   const AlertScreen({Key? key}) : super(key: key);
   //contenido para IOS
   void displayDialogIOS(BuildContext context) {
@@ -24,23 +23,24 @@ class AlertScreen extends StatelessWidget {
             ]),
             actions: [
               TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                }, 
-                child: const Text("Cancelar") )
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Cancelar"))
             ],
           );
         });
   }
-  
+
   void displayDialogMaterial(BuildContext context) {
     showDialog(
         //barrierDismissible permite cerra el dialog en la sombra
-        barrierDismissible: false,
+        barrierDismissible: true,
         context: context,
         builder: (context) {
           return AlertDialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) )  ,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 5,
             title: const Text('Dialogo'),
             content: Column(mainAxisSize: MainAxisSize.min, children: const [
@@ -53,10 +53,10 @@ class AlertScreen extends StatelessWidget {
             ]),
             actions: [
               TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                }, 
-                child: const Text("Cancelar") )
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Cancelar"))
             ],
           );
         });
@@ -66,24 +66,29 @@ class AlertScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-         child: ElevatedButton(
+        child: ElevatedButton(
           child: const Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: Text('Mostrar Alerta', style: TextStyle(fontSize: 15),),
-          ), 
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: Text(
+              'Mostrar Alerta',
+              style: TextStyle(fontSize: 15),
+            ),
+          ),
           //Platform para selecccionar cual plataforma se esta usando
-          onPressed: () => Platform.isAndroid ? displayDialogMaterial( context)
-          : displayDialogIOS( context),
+          onPressed: () => Platform.isAndroid
+              ? displayDialogMaterial(context)
+              : displayDialogIOS(context),
           // onPressed: () => displayDialogMaterial( context),
           // onPressed: () => displayDialogIOS( context),
-           ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlue,
         child: const Icon(Icons.close),
         onPressed: () {
-         Navigator.pop(context);
-      },),
+          Navigator.pop(context);
+        },
+      ),
     );
   }
 }

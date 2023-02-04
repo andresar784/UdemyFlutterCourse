@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomCard2 extends StatelessWidget {
+  
   final String imageURL;
   final String? description;
 

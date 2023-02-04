@@ -25,7 +25,9 @@ class CustomInputField extends StatelessWidget {
         //prefixIcon: Icon(Icons.verified_user_sharp),
         suffixIcon: Icon(Icons.group_add_outlined),
         icon: Icon(Icons.assignment_ind_sharp ), 
-        
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10))
+        )
       ),
     );
   }
